@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgb(8, 8, 20);
+    position: relative;
+    overflow-x: hidden;
+    color: white;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, #4f4f4f14 1px, transparent 1px),
+        linear-gradient(to bottom, #80808005 1px, transparent 1px);
+    background-size: 14px 24px;
+    z-index: -2;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 600px;
+    width: 600px;
+    border-radius: 50%;
+    background-image: radial-gradient(300px at center, rgba(0, 153, 255, 0.2), transparent);
+    z-index: -1;
+    pointer-events: none;
+}
