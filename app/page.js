@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <>
       <main className="min-h-screen">
-        <div className="h-[60vh] flex flex-col justify-center items-center">
+        <div className="h-[40vh] sm:h-[60vh] flex flex-col justify-center items-center">
           <div className='font-bold text-4xl'>Get Me A Chai</div>
 
           <div className="text-center text-2xl font-bold mt-10 mb-2">
@@ -18,8 +18,8 @@ export default function Home() {
 
         <div className="h-1 bg-slate-800 w-full"></div>
 
-        <div className="desc h-80 my-10">
-          <h1 className="text-3xl text-center font-bold ">Fund your favorite creators</h1>
+        <div className="desc h-140 sm:h-80 my-10">
+          <h2 className="text-3xl text-center font-bold">Fund your favorite creators</h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 justify-items-center mt-10">
             <div className="img1 w-fit flex flex-col justify-center items-center space-y-2">
@@ -47,14 +47,14 @@ export default function Home() {
         <div className="h-1 bg-slate-800 w-full"></div>
 
         <div className="min-h-70 my-10">
-          <h1 className="text-3xl text-center font-bold mb-10">Learn more about us!</h1>
-          <div className="w-3/4 flex justify-between items-center mx-auto">
+          <h2 className="text-3xl text-center font-bold mb-10">Learn more about us!</h2>
+          <div className="w-full flex flex-col sm:flex-row justify-around items-center mx-auto">
             <div>
-              <iframe width="460" height="215" src="https://www.youtube.com/embed/5utdT0ksIws?si=hAIw63tE21NipssE" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullscreen></iframe>
+              <iframe max-width="460" height="215" src="https://www.youtube.com/embed/5utdT0ksIws?si=hAIw63tE21NipssE" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
 
             <div>
-              <iframe width="460" height="215" src="https://www.youtube.com/embed/NcWqHG1ye3g?si=NUtUrXICLIyl9_zL" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullscreen></iframe>
+              <iframe max-width="460" height="215" src="https://www.youtube.com/embed/NcWqHG1ye3g?si=NUtUrXICLIyl9_zL" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
           </div>
         </div>
