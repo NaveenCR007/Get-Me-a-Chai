@@ -10,14 +10,14 @@
 - 💸 Accept payments using **Razorpay**
 - 👨‍💼 Creator profile pages (with custom messages and links)
 - 🧾 Public “Buy Me a Chai” pages with a payment form
-- 📱 Fully responsive, clean UI with **shadcn/ui** and **Tailwind CSS**
+- 📱 Fully responsive, clean UI with **Tailwind CSS**
 - 📤 Option to display support messages from chai-buyers
 
 ---
 
 ## 🧪 Tech Stack
 
-- **Frontend**: Next.js (App Router), TypeScript, Tailwind CSS
+- **Frontend**: Next.js (App Router), JavaScript, Tailwind CSS
 - **Authentication**: NextAuth
 - **Payments**: Razorpay Payment Gateway
 - **Styling**: Tailwind CSS v4
