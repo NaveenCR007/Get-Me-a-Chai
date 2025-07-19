@@ -46,7 +46,7 @@ export default function Home() {
 
         <div className="h-1 bg-slate-800 w-full"></div>
 
-        <div className="min-h-70 my-10">
+        <div data-aos="fade-up" className="min-h-70 my-10">
           <h2 className="text-3xl text-center font-bold mb-10">Learn more about us!</h2>
           <div className="w-full flex flex-col sm:flex-row justify-around items-center mx-auto">
             <div>

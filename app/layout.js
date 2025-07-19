@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SessionWrapper from "@/components/SessionWrapper";
+import AOSInit from "./AOSInit";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "GetMeAChai - Support creators with a cup of chai",
+  title: "Get Me a Chai - Support creators with a cup of chai",
   description: "This website allows you to support your favorite creators by buying them a cup of chai.",
 };
 
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SessionWrapper>
+          <AOSInit/>
           <Navbar />
           {children}
           <Footer />

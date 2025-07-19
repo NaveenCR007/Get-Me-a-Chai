@@ -9,15 +9,15 @@ const Navbar = () => {
 
     return (
         <nav className='flex justify-between px-4 items-center bg-zinc-900 text-white h-15 py-4'>
-            <div className='font-bold text-2xl flex items-center justify-center gap-2'>
-                <Link href="/">Get Me Link Chai</Link>
+            <div className='font-bold text-2xl flex items-center justify-center gap-1'>
+                <Link href="/">Get Me a Chai</Link>
                 <img width={40} height={40} src="/tea.gif" alt="chai" />
             </div>
 
             {/* Conditional Rendering */}
             <div>
                 {session ? (
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2" tabIndex={0} onBlur={() => setDropDown(prev => !prev)}>
                         {/* show image of user */}
                         {session.user?.image && (
                             <img
@@ -37,13 +37,10 @@ const Navbar = () => {
                                     <Link href="/dashboard" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</Link>
+                                    <Link href="/profile" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Your Profile</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</Link>
-                                </li>
-                                <li>
-                                    <button onClick={() => { signOut({callbackUrl : "/"}); setDropDown(prev => !prev); }} className="block px-4 w-full text-start py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</button>
+                                    <button onClick={() => { signOut({ callbackUrl: "/" }); setDropDown(prev => !prev); }} className="block cursor-pointer px-4 w-full text-start py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</button>
                                 </li>
                             </ul>
                         </div>}
