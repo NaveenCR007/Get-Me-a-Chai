@@ -1,6 +1,6 @@
-# ☕ GetMeAChai – Support Creator Platform
+# ☕ Get Me a Chai – Support Creator Platform
 
-**GetMeAChai** is a Patreon-style full-stack platform that allows users to support creators by buying them a chai. It features user authentication, payment integration via **Razorpay**, and a clean, responsive UI built with modern web technologies.
+**Get Me a Chai** is a Patreon-style full-stack platform that allows users to support creators by buying them a chai. It features user authentication, payment integration via **Razorpay**, and a clean, responsive UI built with modern web technologies.
 
 ---
 
