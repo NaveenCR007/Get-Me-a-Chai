@@ -1,6 +1,11 @@
+"use client"
 import React from 'react'
+import { useSession } from 'next-auth/react'
 
 const Profile = ({ params }) => {
+  const { data: session } = useSession()
+  if (!session) return <div className="text-white text-center mt-10">Loading...</div>;
+
   return (
     <div className="w-full">
 
@@ -20,7 +25,7 @@ const Profile = ({ params }) => {
 
         {/* Profile content*/}
         <div className="absolute left-10 gap-1 top-16 z-20 flex flex-col justify-center items-start h-full w-1/2 px-10 text-white">
-          <h1 className="text-5xl font-bold">{params.username}</h1>
+          <h1 className="text-5xl font-bold">{session.user.name}</h1>
 
           <div className="stats flex justify-center items-center gap-2 text-gray-400">
             <p>20.1k members</p>
@@ -29,7 +34,7 @@ const Profile = ({ params }) => {
             <span>⸱</span>
             <p>$46,098/month</p>
           </div>
-          <p className="text-sm mt-2">Hi, I'm {params.username}! My team and I are making Paralives, an upcoming life simulation game for PC and Mac. Build your dream house, create some characters and manage their lives in a cozy open world town! The game is currently in development and will be released...</p>
+          <p className="text-sm mt-2">Hi, I'm {session.user.name}! My team and I are making Paralives, an upcoming life simulation game for PC and Mac. Build your dream house, create some characters and manage their lives in a cozy open world town! The game is currently in development and will be released...</p>
 
           <div className='flex justify-start gap-3 items-center w-1/2'>
             <button className="mt-4 px-6 py-2 text-center bg-[#3f878b] transition-all delay-75 hover:bg-[#3a7476] cursor-pointer rounded-md text-white font-medium">Become a member</button>
@@ -53,12 +58,18 @@ const Profile = ({ params }) => {
         </div>
 
         <div className="donate w-[48%] rounded-md bg-slate-900 h-[65vh]">
-          <h2 className='font-bold text-center pt-5 text-3xl mb-4'>Buy {params.username} a Chai!</h2>
+          <h2 className='font-bold text-center pt-5 text-3xl mb-4'>Buy {session.user.name} a Chai!</h2>
 
           <div className="donator-info w-3/4 mx-auto flex flex-col gap-3">
-            <input className='w-full px-2 h-10 border rounded-md' type="text" placeholder='Name' />
-            <input className='w-full px-2 h-10 border rounded-md' type="text" placeholder='Say something nice...' />
             <input className='w-full px-2 h-10 border rounded-md' type="number" placeholder='Enter amount' />
+            <input className='w-full px-2 h-10 border rounded-md' type="text" placeholder='Say something nice...' />
+
+            {/* or choose from these prices: */}
+            <div className='flex justify-between items-center'>
+              <button className='w-[30%] border border-bg-[#3f878b] transition-all delay-75 hover:bg-[#3a7476] cursor-pointer rounded-md text-white font-medium py-2'>₹10</button>
+              <button className='w-[30%] border border-bg-[#3f878b] transition-all delay-75 hover:bg-[#3a7476] cursor-pointer rounded-md text-white font-medium py-2'>₹50</button>
+              <button className='w-[30%] border border-bg-[#3f878b] transition-all delay- 75 hover:bg-[#3a7476] cursor-pointer rounded-md text-white font-medium py-2'>₹100</button>
+            </div>
 
             <button className='w-full bg-[#3f878b] transition-all delay-75 hover:bg-[#3a7476] cursor-pointer rounded-md text-white font-medium py-2'>Make payment</button>
           </div>

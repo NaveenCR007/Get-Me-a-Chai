@@ -9,7 +9,7 @@ const Footer = () => {
             </p>
             <p className="text-xs mt-2">
             Made with ❤️ by the GetMeAChai team
-            </p>
+            </p>  
         </div>
     </footer>
   )
