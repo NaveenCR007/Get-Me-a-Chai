@@ -3,6 +3,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.imgInvert {
+  filter: invert(0.33);
+}
+
 body {
     min-height: 100vh;
     width: 100%;

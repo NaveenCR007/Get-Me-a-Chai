@@ -51,9 +51,18 @@ const Profile = ({ params }) => {
         <div className="supporters w-[50%] rounded-md bg-slate-900 p-7 h-[65vh] overflow-y-auto">
           <h2 className='font-bold text-start text-3xl mb-4'>Recent supporters</h2>
           <ul>
-            <li><b className='font-semibold text-[#3f878b]'>Gurumurthy</b> bought a chai with a message big fan bhai</li>
-            <li><b className='font-semibold text-[#3f878b]'>Gurumurthy</b> bought a chai with a message big fan bhai</li>
-            <li><b className='font-semibold text-[#3f878b]'>Gurumurthy</b> bought a chai with a message big fan bhai</li>
+            <li className='flex items-center gap-2 mb-3'>
+              <img src="/avatar.gif" width={33} alt="" />
+              <b className='font-semibold text-[#3f878b]'>Gurumurthy</b> bought a chai with a message big fan bhai
+            </li>
+            <li className='flex items-center gap-2 mb-3'>
+              <img src="/avatar.gif" width={33} alt="" />
+              <b className='font-semibold text-[#3f878b]'>Gurumurthy</b> bought a chai with a message big fan bhai
+            </li>
+            <li className='flex items-center gap-2 mb-3'>
+              <img src="/avatar.gif" width={33} alt="" />
+              <b className='font-semibold text-[#3f878b]'>Gurumurthy</b> bought a chai with a message big fan bhai
+            </li>
           </ul>
         </div>
 
@@ -81,7 +90,7 @@ const Profile = ({ params }) => {
         <section className="">
           <div className="py-8 px-4 mx-auto w-[90%] lg:py-16 lg:px-6">
             <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-              <h2 className="mb-4 text-3xl tracking-tight font-bold text-gray-900 dark:text-white">
+              <h2 className="mb-4 text-3xl tracking-tight font-bold text-white">
                 Choose a paid membership
               </h2>
             </div>
@@ -125,7 +134,7 @@ const Profile = ({ params }) => {
               ].map(({ title, price, features, hieght }) => (
                 <div
                   key={title}
-                  className={`${hieght} my-auto flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg shadow xl:p-8 dark:bg-[#252626] dark:text-white`}
+                  className={`${hieght} my-auto flex flex-col p-6 mx-auto max-w-lg text-center rounded-lg shadow xl:p-8 bg-[#252626] text-white`}
                 >
                   <h3 className="text-3xl font-bold text-start">{title}</h3>
 
