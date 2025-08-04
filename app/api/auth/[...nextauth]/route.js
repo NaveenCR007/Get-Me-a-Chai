@@ -4,7 +4,6 @@ import TwitterProvider from "next-auth/providers/twitter";
 import GoogleProvider from "next-auth/providers/google";
 import mongoose from "mongoose";
 import { User } from "@/models/Users";
-import { Payment } from "@/models/Payments";
 
 
 const handler = NextAuth({

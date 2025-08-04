@@ -54,7 +54,7 @@ const Navbar = () => {
                                         <Link href="/dashboard" onClick={() => {setDropDown(false)}} className="block px-4 py-2 hover:bg-gray-600 hover:text-white">Dashboard</Link>
                                     </li>
                                     <li>
-                                        <Link href="/profile" onClick={() => {setDropDown(false)}} className="block px-4 py-2 hover:bg-gray-600 hover:text-white">Your Profile</Link>
+                                        <Link href={`/${session.user.name}`} onClick={() => {setDropDown(false)}} className="block px-4 py-2 hover:bg-gray-600 hover:text-white">Your Profile</Link>
                                     </li>
                                     <li>
                                         <button
