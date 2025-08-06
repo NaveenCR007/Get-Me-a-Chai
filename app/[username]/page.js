@@ -1,11 +1,13 @@
 "use client"
 import PaymentPage from "@/components/PaymentPage"
 import React from 'react'
+import { useSession } from "next-auth/react"
 
-const username = ({params}) => {
+const username = () => {
+  const {data : session} = useSession()
   return (
     <div>
-      <PaymentPage/>
+      <PaymentPage params={session}/>
     </div>
   )
 }

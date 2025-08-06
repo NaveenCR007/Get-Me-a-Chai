@@ -2,11 +2,12 @@
 
 import Script from 'next/script'
 import { useSession } from 'next-auth/react'
-import { initiate } from '@/actions/useractions'
+import { initiate } from '@/app/actions/useractions'
 import { useState } from 'react'
 
-const PaymentPage = () => {
-    const [paymentform, setPaymentform] = useState({})
+const PaymentPage = ({params}) => {
+    const [paymentform, setPaymentform] = useState({name : '', amount : '', message : ''})
+    const [razorpayLoaded, setRazorpayLoaded] = useState(false)
     const { data: session } = useSession()
     if (!session) return <div className="text-white text-center mt-10">Loading...</div>;
 
@@ -19,40 +20,51 @@ const PaymentPage = () => {
     }
 
     let pay = async (amount) => {
-        // get the order id
-        let a = await initiate(amount, session?.user.name, paymentform);
-        orderID = a.id;
+        if (!razorpayLoaded) {
+            alert("Razorpay is still loading. Try again in a moment.");
+            return;
+        }
 
-        var options = {
-            "key": process.env.KEY_ID, // Enter the Key ID generated from the Dashboard
-            "amount": amount, // Amount is in currency subunits.
-            "currency": "INR",
-            "name": "Get Me a Chai", //your business name
-            "description": "Chai Transaction",
-            "image": "https://example.com/your_logo",
-            "order_id": orderID,
-            "callback_url": "http://localhost:3000/api/razorpay",
-            "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-                "name": "Gaurav Kumar", //your customer's name
-                "email": "gaurav.kumar@example.com",
-                "contact": "+919876543210" //Provide the customer's phone number for better conversion rates 
+        let a = await initiate(amount, session.user.name, paymentform);
+
+        if (!a?.id) {
+            alert("Failed to initiate payment. Try again.");
+            return;
+        }
+
+        let orderID = a.id;
+
+        const options = {
+            key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+            amount: amount,
+            currency: "INR",
+            name: "Get Me a Chai",
+            description: "Chai Transaction",
+            image: "https://example.com/your_logo",
+            order_id: orderID,
+            callback_url: "http://localhost:3000/api/razorpay",
+            prefill: {
+                name: params.user.name || "Anonymous",
+                email: params.user.email || "",
+                contact: ""
             },
-            "notes": {
-                "address": "Razorpay Corporate Office"
+            notes: {
+                address: "Razorpay Corporate Office"
             },
-            "theme": {
-                "color": "#3399cc"
+            theme: {
+                color: "#3399cc"
             }
         };
-        var rzp1 = new Razorpay(options);
-        rzp1.open();
-    }
+
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+    };
 
     return (
         <>
-            <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
-            <div className="w-full">
+            <Script onLoad={() => setRazorpayLoaded(true)} src="https://checkout.razorpay.com/v1/checkout.js"></Script>
 
+            <div className="w-full">
                 <div className="cover h-100 relative flex flex-row-reverse justify-between items-center">
 
                     <div className="w-full h-full bg-cover bg-center"
@@ -114,8 +126,11 @@ const PaymentPage = () => {
                         <h2 className='font-bold text-center pt-5 text-3xl mb-4'>Buy {session.user.name} a Chai!</h2>
 
                         <div className="donator-info w-3/4 mx-auto flex flex-col gap-3">
-                            <input onChange={() => handleChange()} value={paymentform.amount} className='w-full px-2 h-10 border rounded-md' type="number" placeholder='Enter amount' />
-                            <input onChange={() => handleChange()} value={paymentform.message} className='w-full px-2 h-10 border rounded-md' type="text" placeholder='Say something nice...' />
+                            <input onChange={(e) => handleChange(e)} name='name' value={paymentform.name} className='w-full px-2 h-10 border rounded-md' type="text" placeholder='Enter your name' />
+
+                            <input onChange={(e) => handleChange(e)} name='amount' value={paymentform.amount} className='w-full px-2 h-10 border rounded-md' type="number" placeholder='Enter amount' />
+
+                            <input onChange={(e) => handleChange(e)} name='message' value={paymentform.message} className='w-full px-2 h-10 border rounded-md' type="text" placeholder='Say something nice...' />
 
                             {/* or choose from these prices: */}
                             <div className='flex justify-between items-center'>
